@@ -1,0 +1,57 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+}
+
+#svg1 {
+	background-color: white;
+	position: relative;
+	bottom: 6em;
+	padding-bottom: 1.5em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h3 {
+	padding-bottom: 5em;
+}
+
+#toolTip {
+	padding: 1em;
+    border: 0.2em solid white;
+    text-align: center;
+}
+
+.rects {
+	margin-bottom: 100em;
+}
+
+#legend {
+	position: relative;
+	float: left;
+	left: 150px;
+	bottom: 5em;
+}
+
+#footer {
+	position: relative;
+	text-align: center;
+	bottom: 3em;
+}
+
+
+
+
+
+
+
