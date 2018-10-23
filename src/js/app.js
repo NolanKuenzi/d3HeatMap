@@ -5,15 +5,15 @@ const width = 1600;
 const height = 450;
 
 let svg = d3.select("#svg1")
-			  .attr("height", height)
-			  .attr("width", width);
+            .attr("height", height)
+            .attr("width", width);
 
 let margin = {top: 22, right: 86, bottom: 30, left: 150};
 const viewWidth = +svg.attr("width") - margin.right - margin.left;
 const viewHeight = +svg.attr("height") - margin.top - margin.bottom;
 
 svg = svg.append("g")
-    	   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 function heatMap() {
   const req = new XMLHttpRequest();
@@ -32,11 +32,11 @@ function heatMap() {
                       .ticks(26)
                       .tickSize(8)
                       .tickSizeOuter(0) 
-  					          .tickFormat(d3.format("d"));
+                      .tickFormat(d3.format("d"));
 
   const xAxis = svg.append("g")
-        				   .attr("id", "x-axis")
-        				   .attr("transform", "translate(" + 0 + "," + viewHeight + ")")
+                   .attr("id", "x-axis")
+                   .attr("transform", "translate(" + 0 + "," + viewHeight + ")")
                    .style("font-size", 16)
                    .call(xAxisCall);
   
@@ -99,46 +99,46 @@ function heatMap() {
                  .attr("width", 6)
                  .attr("height", 33)
                  .style("fill", function(d) {
-                    const testValue = (8.66 + d.variance).toFixed(1);
-                    let fillColor;
-                    for (let i = 0; i < heatMapData.length; i++) {
-                      if (testValue < heatMapData[i].number) {
-                        fillColor = heatMapData[i].color;
-                        return fillColor;
-                      }
-                      if (testValue >= heatMapData[9].number) {
-                        fillColor = heatMapData[10].color;
-                        return fillColor;
-                      }
-                    }  
+                   const testValue = (8.66 + d.variance).toFixed(1);
+                   let fillColor;
+                     for (let i = 0; i < heatMapData.length; i++) {
+                       if (testValue < heatMapData[i].number) {
+                         fillColor = heatMapData[i].color;
+                         return fillColor;
+                       }
+                       if (testValue >= heatMapData[9].number) {
+                         fillColor = heatMapData[10].color;
+                         return fillColor;
+                       }
+                     }  
                   })
                  .on("mouseover", function(d) {
-                  const toolT = document.getElementById("toolTip");
-                  const monthNumber = d.month - 1;
-                  const positive = d.variance.toString().slice(0, 1);
+                 const toolT = document.getElementById("toolTip");
+                 const monthNumber = d.month - 1;
+                 const positive = d.variance.toString().slice(0, 1);
                    d3.select(this)
                      .style("stroke", "black")
                      .style("stroke-width", 3);
-                  toolTip
-                      .attr("data-year", d.year)
-                      .style("display", "inline-block")
-                      .html(() => `${d.year} - ${months[monthNumber]} <br> ${(8.66 + d.variance).toFixed(1)}°C <br> ${positive === "-" ? d.variance.toFixed(1) : "+" + d.variance.toFixed(1)}°C`)
-                      .style("left", d3.event.pageX - (toolT.offsetWidth / 2) + "px")   
-                      .style("top", d3.event.pageY - 125 + "px");
+                   toolTip
+                     .attr("data-year", d.year)
+                     .style("display", "inline-block")
+                     .html(() => `${d.year} - ${months[monthNumber]} <br> ${(8.66 + d.variance).toFixed(1)}°C <br> ${positive === "-" ? d.variance.toFixed(1) : "+" + d.variance.toFixed(1)}°C`)
+                     .style("left", d3.event.pageX - (toolT.offsetWidth / 2) + "px")   
+                     .style("top", d3.event.pageY - 125 + "px");
                  })
-                .on("mouseleave", function(d) {
-                  d3.select(this)
-                    .style("stroke", "none");
-                  toolTip
-                    .style("display", "none");
-                });   
-                      
+                 .on("mouseleave", function(d) {
+                   d3.select(this)
+                     .style("stroke", "none");
+                   toolTip
+                     .style("display", "none");
+                   });  
+
   const width2 = 400;
   const height2 = 90;
 
   let svg2 = d3.select("#legend") 
-                 .attr("height", height2)
-                 .attr("width", width2);
+               .attr("height", height2)
+               .attr("width", width2);
 
   const margin2 = {top: 5, right: 35, bottom: 0, left: 20};
   const viewHeight2 = +svg2.attr("height") - margin2.right - margin2.left;
@@ -158,10 +158,10 @@ function heatMap() {
   const legendFormat2 = d3.format(".3n");
  
   const legendCall = d3.axisBottom(legendScale)
-                       .tickValues(legendNumbers)
-                       .tickFormat(d => d.length === 4 ? legendFormat2(d) : legendFormat1(d))
-                       .tickSize(12)
-                       .tickSizeOuter(0);
+                      .tickValues(legendNumbers)
+                      .tickFormat(d => d.length === 4 ? legendFormat2(d) : legendFormat1(d))
+                      .tickSize(12)
+                      .tickSizeOuter(0);
                    
   const legendAxis = svg2.append("g")
                          .attr("transform", "translate(" + margin2.left + "," + viewHeight2 + ")")
@@ -180,7 +180,24 @@ function heatMap() {
                            .attr("width", 35)
                            .style("fill", d => d.color)
                            .style("stroke", "black")
-                           .style("stroke-width", 1.5); 
+                           .style("stroke-width", 1.5);
+  /* For mobile devices */
+  const clear = document.querySelector("body");
+          clear.addEventListener("touchstart", function(e) {
+            const clearCells = document.getElementsByClassName("cell");
+              if (e.target.className.baseVal !== "cell") {
+                toolTip
+                  .style("display", "none");
+              } 
+              for (let i = 0; i < clearCells.length; i++) {
+                clearCells[i].style.stroke = "none";
+              }
+              if (e.target.className.baseVal === "cell") {
+                    e.target.style.stroke = "black";
+                    e.target.style.strokeWidth = 3;
+              }              
+          });
+
   };
 }
 heatMap();
