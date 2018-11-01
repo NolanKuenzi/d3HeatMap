@@ -76,15 +76,7 @@ function heatMap() {
      .attr("transform", "rotate(-90)")
      .style("font-size", "18px")
      .text("Months");
-
-  svg.append("text")
-     .attr("id", "x-axisLabel")
-     .attr("x", 660)
-     .attr("y", 445)
-     .attr("z-index", 5)
-     .style("font-size", "18px")
-     .text("Years");
-           
+     
   const bars = d3.select("svg").append("g")
                  .selectAll("rect")
                  .data(data.monthlyVariance)

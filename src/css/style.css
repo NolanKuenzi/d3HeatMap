@@ -36,22 +36,20 @@ h3 {
   margin-bottom: 100em;
 }
 
+#x-axisLabel {
+  position: relative;
+  bottom: 7.5em; 
+  font-size: 18px;
+}
+
 #legend {
   position: relative;
-  float: left;
-  left: 150px;
-  bottom: 5em;
+  bottom: 7em; 
 }
 
 #footer {
   position: relative;
   text-align: center;
-  bottom: 3em;
+  bottom: 6em;
 }
-
-
-
-
-
-
 
