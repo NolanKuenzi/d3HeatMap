@@ -5,13 +5,21 @@
   <title id="title">Visualize Data with a Heat Map</title>
 <link href="style.bundle.css" rel="stylesheet"></head>
 <body>
-<div id="content">
+
+<div id ="headers">
   <h1>Monthly Global Land-Surface Temperature</h1>
   <h3 id="description">1753 - 2015: base temperature 8.66°C</h3>
-  <div><svg id="svg1"></svg></div>
+</div>
+
+<div id="body">
+    <svg id="svg1"></svg></div>
+</div>
+
+<div id="labelLegend"> 
   <div id="x-axisLabel"><p>Years</p></div>
-  <div><svg id="legend"></svg></div>
-</div> <!-- Content End -->
+  <div id="legendDiv"><svg id="legend"></svg></div>
+</div>
+  
   <div id="footer"><h4>Copyright © 2018 Nolan Kuenzi. Made for the freeCodeCamp Data Visualization Project: Visualize Data with a Heat Map.</h4>
   </div>
   <script type="text/javascript" src="app.bundle.js"></script></body>

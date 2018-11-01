@@ -6,11 +6,13 @@ body {
   height: 100%;
 }
 
-#content {
-  display: flex;
-  flex-direction: column;
+#headers {
+  position: relative;
   text-align: center;
-  justify-content: center;
+}
+
+h3 {
+  padding-bottom: 5em;
 }
 
 #svg1 {
@@ -20,10 +22,6 @@ body {
   padding-bottom: 1.5em;
   margin-left: auto;
   margin-right: auto;
-}
-
-h3 {
-  padding-bottom: 5em;
 }
 
 #toolTip {
@@ -36,15 +34,15 @@ h3 {
   margin-bottom: 100em;
 }
 
-#x-axisLabel {
+#labelLegend {
   position: relative;
-  bottom: 7.5em; 
-  font-size: 18px;
+  bottom: 7em;
+  text-align: center;
 }
 
-#legend {
+#x-axisLabel {
   position: relative;
-  bottom: 7em; 
+  bottom: 1em;
 }
 
 #footer {
