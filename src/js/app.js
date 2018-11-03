@@ -8,7 +8,7 @@ let svg = d3.select("#svg1")
             .attr("height", height)
             .attr("width", width);
 
-let margin = {top: 22, right: 86, bottom: 30, left: 100};
+let margin = {top: 22, right: 86, bottom: 30, left: 150};
 const viewWidth = +svg.attr("width") - margin.right - margin.left;
 const viewHeight = +svg.attr("height") - margin.top - margin.bottom;
 
