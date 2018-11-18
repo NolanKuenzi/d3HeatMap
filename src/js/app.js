@@ -15,13 +15,7 @@ const viewHeight = +svg.attr("height") - margin.top - margin.bottom;
 svg = svg.append("g")
          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-function heatMap() {
-  const req = new XMLHttpRequest();
-  req.open("GET", "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json", true);
-  req.send();
-  req.onload = function() {
-  const data = JSON.parse(req.responseText);
-  
+d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json").then(function(data) { 
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
 
   const xAxisScale = d3.scaleLinear()
@@ -123,7 +117,7 @@ function heatMap() {
                      .style("stroke", "none");
                    toolTip
                      .style("display", "none");
-                   });  
+                   });   
 
   const width2 = 400;
   const height2 = 90;
@@ -173,23 +167,24 @@ function heatMap() {
                            .style("fill", d => d.color)
                            .style("stroke", "black")
                            .style("stroke-width", 1.5);
-  /* For mobile devices */
-  const clear = document.querySelector("body");
-          clear.addEventListener("touchstart", function(e) {
-            const clearCells = document.getElementsByClassName("cell");
-              if (e.target.className.baseVal !== "cell") {
-                toolTip
-                  .style("display", "none");
-              } 
-              for (let i = 0; i < clearCells.length; i++) {
-                clearCells[i].style.stroke = "none";
-              }
-              if (e.target.className.baseVal === "cell") {
-                    e.target.style.stroke = "black";
-                    e.target.style.strokeWidth = 3;
-              }              
-          });
 
-  };
-}
-heatMap();
+}).catch(function(error) {
+  alert("Data failed to load, please try again");
+});
+                        
+/* For mobile devices */
+const clear = document.querySelector("body");
+clear.addEventListener("touchstart", function(e) {
+  const clearCells = document.getElementsByClassName("cell");
+  const clearToolTip = document.getElementById("toolTip");
+  if (e.target.className.baseVal !== "cell") {
+    clearToolTip.style.display = "none";
+  } 
+  for (let i = 0; i < clearCells.length; i++) {
+    clearCells[i].style.stroke = "none";
+  }
+  if (e.target.className.baseVal === "cell") {
+      e.target.style.stroke = "black";
+      e.target.style.strokeWidth = 3;
+  }              
+});
