@@ -169,7 +169,7 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
                            .style("stroke-width", 1.5);
 
 }).catch(function(error) {
-  alert("Data failed to load, please try again");
+  alert("Data failed to load, please try again.");
 });
                         
 /* For mobile devices */
