@@ -1,0 +1,53 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#headers {
+  position: relative;
+  text-align: center;
+}
+
+h3 {
+  padding-bottom: 5em;
+}
+
+#svg1 {
+  position: relative;
+  bottom: 6em;
+  padding-bottom: 1.5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#toolTip {
+  padding: 1em;
+  border: 0.2em solid white;
+  text-align: center;
+}
+
+.rects {
+  margin-bottom: 100em;
+}
+
+#labelLegend {
+  position: relative;
+  bottom: 7em;
+  text-align: center;
+}
+
+#x-axisLabel {
+  position: relative;
+  bottom: 1em;
+}
+
+#footer {
+  position: relative;
+  text-align: center;
+  bottom: 6em;
+}
+
+
